@@ -86,7 +86,7 @@ export default function HeroBanners() {
                             </div>
                             {/* Placeholder for bottom right image */}
                             <img
-                                src="/images/thinking.png"
+                                src="/images/problem-solving.png"
                                 alt=""
                                 className="absolute -top-5 w-[420px] -right-35"
                             />
