@@ -46,6 +46,7 @@ const NAV_LINKS = [
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
     { title: "Contact", href: "/contact" },
+    { title: "Investors", href: "/investors" },
 ];
 
 export default function Header() {

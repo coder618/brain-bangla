@@ -133,28 +133,19 @@ export default function Footer() {
                         <h3 className="mb-6 text-sm font-semibold">Customer</h3>
                         <ul className="space-y-3 text-sm text-white/70">
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Help Center
+                                <Link
+                                    href="/privacy-policy"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Privacy Policy
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    My Account
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Track My Order
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Return Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Gift Cards
+                                <Link
+                                    href="/terms-and-conditions"
+                                    className="hover:text-white transition-colors"
+                                >
+                                    Terms of Service
                                 </Link>
                             </li>
                         </ul>
@@ -164,27 +155,10 @@ export default function Footer() {
                         <h3 className="mb-6 text-sm font-semibold">About Us</h3>
                         <ul className="space-y-3 text-sm text-white/70">
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Company Info
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Press Releases
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Careers
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Reviews
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
+                                <Link
+                                    href="/investors"
+                                    className="hover:text-white transition-colors"
+                                >
                                     Investor Relations
                                 </Link>
                             </li>
@@ -195,28 +169,21 @@ export default function Footer() {
                         <h3 className="mb-6 text-sm font-semibold">Quick Links</h3>
                         <ul className="space-y-3 text-sm text-white/70">
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Search
+                                <Link href="/shop" className="hover:text-white transition-colors">
+                                    Shop
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Become a Reseller
+                                <Link href="/cart" className="hover:text-white transition-colors">
+                                    Cart
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
+                                <Link
+                                    href="/contact"
+                                    className="hover:text-white transition-colors"
+                                >
                                     Contact Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Terms of Service
                                 </Link>
                             </li>
                         </ul>
@@ -240,25 +207,19 @@ export default function Footer() {
                 <div className="flex flex-col items-center justify-center border-t border-white/10 pt-8 pb-4 gap-6 text-center text-xs text-white/70">
                     <p>Copyright © {year} All Rights Reserved.</p>
                     <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Customer
+                        <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                            Privacy Policy
                         </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            About Us
-                        </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Investor Relations
-                        </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
+                        <Link
+                            href="/terms-and-conditions"
+                            className="hover:text-white transition-colors"
+                        >
                             Terms of Service
                         </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Become a Reseller
+                        <Link href="/investors" className="hover:text-white transition-colors">
+                            Investor Relations
                         </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Company Info
-                        </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
+                        <Link href="/contact" className="hover:text-white transition-colors">
                             Contact Us
                         </Link>
                     </div>
