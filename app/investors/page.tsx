@@ -15,10 +15,10 @@ export default function InvestorsPage() {
                         Invest in the Future of Play
                     </h1>
                     <p className="text-lg md:text-xl text-zinc-800 mb-10 max-w-2xl mx-auto font-medium">
-                        At <span className="font-black text-[#f5415f]">güzal</span>, we are
-                        revolutionizing the toy industry by creating joyful, sustainable, and
-                        educational experiences for children across the globe. Join us on our
-                        mission.
+                        At <span className="font-black text-[#f5415f]">güzal</span>, I am on a
+                        mission to revolutionize the toy industry by creating joyful, sustainable,
+                        and educational experiences for children. Join me in bringing this vision to
+                        life.
                     </p>
                     <Link
                         href="/contact"
@@ -40,8 +40,9 @@ export default function InvestorsPage() {
                         Why Invest in güzal?
                     </h2>
                     <p className="text-zinc-600 max-w-2xl mx-auto">
-                        We are uniquely positioned in a rapidly growing market, backed by a
-                        passionate team and a proven track record of delivering smiles.
+                        I am building a brand positioned in a rapidly growing market, driven by a
+                        deep passion for early childhood development and a fresh perspective on
+                        play.
                     </p>
                 </div>
 
@@ -63,11 +64,11 @@ export default function InvestorsPage() {
                                 <polyline points="17 6 23 6 23 12"></polyline>
                             </svg>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#111]">Rapid Growth</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#111]">Untapped Market</h3>
                         <p className="text-zinc-600 text-sm leading-relaxed">
-                            Since our inception, we have consistently doubled our YoY revenue,
-                            capturing significant market share in the premium educational toy
-                            sector.
+                            There is a massive opportunity in the premium, educational toy sector
+                            for products that truly blend modern design with developmental
+                            milestones.
                         </p>
                     </div>
 
@@ -87,10 +88,13 @@ export default function InvestorsPage() {
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             </svg>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#111]">Sustainable Edge</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#111]">
+                            Sustainable Foundation
+                        </h3>
                         <p className="text-zinc-600 text-sm leading-relaxed">
-                            Our commitment to eco-friendly materials and ethical manufacturing
-                            processes resonates strongly with today&apos;s conscious consumers.
+                            Built from day one with a commitment to eco-friendly materials and
+                            ethical manufacturing, resonating strongly with today&apos;s conscious
+                            parents.
                         </p>
                     </div>
 
@@ -113,49 +117,12 @@ export default function InvestorsPage() {
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#111]">Loyal Community</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#111]">Founder Agility</h3>
                         <p className="text-zinc-600 text-sm leading-relaxed">
-                            With an exceptional customer retention rate and thousands of five-star
-                            reviews, our brand advocates are our strongest asset.
+                            As a solo founder, I can iterate quickly, deeply connect with early
+                            customers, and adapt to market needs faster than established
+                            competitors.
                         </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Traction & Numbers */}
-            <section className="bg-[#1e564d] text-white py-16 px-6 sm:px-12 lg:px-24">
-                <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <div className="text-4xl md:text-5xl font-black mb-2 text-[#8cc63f]">
-                            2.5M+
-                        </div>
-                        <div className="text-sm text-white/80 uppercase tracking-wider font-semibold">
-                            Toys Delivered
-                        </div>
-                    </div>
-                    <div>
-                        <div className="text-4xl md:text-5xl font-black mb-2 text-[#f7931e]">
-                            $10M
-                        </div>
-                        <div className="text-sm text-white/80 uppercase tracking-wider font-semibold">
-                            Annual Revenue
-                        </div>
-                    </div>
-                    <div>
-                        <div className="text-4xl md:text-5xl font-black mb-2 text-[#29abe2]">
-                            150k+
-                        </div>
-                        <div className="text-sm text-white/80 uppercase tracking-wider font-semibold">
-                            Active Customers
-                        </div>
-                    </div>
-                    <div>
-                        <div className="text-4xl md:text-5xl font-black mb-2 text-[#f84c63]">
-                            4.9/5
-                        </div>
-                        <div className="text-sm text-white/80 uppercase tracking-wider font-semibold">
-                            Average Rating
-                        </div>
                     </div>
                 </div>
             </section>
@@ -163,18 +130,18 @@ export default function InvestorsPage() {
             {/* Contact CTA */}
             <section className="py-24 px-6 sm:px-12 lg:px-24 text-center max-w-4xl mx-auto">
                 <h2 className="text-3xl font-black text-[#111] mb-6">
-                    Ready to Shape the Future Together?
+                    Ready to Build the Future Together?
                 </h2>
                 <p className="text-zinc-600 mb-10">
-                    We are currently raising our Series A to expand our product lines and scale
-                    internationally. Reach out to our founding team to access our data room and
-                    schedule an introductory call.
+                    I am currently seeking early-stage funding to finalize product development,
+                    secure initial manufacturing, and launch the brand. Reach out directly to
+                    discuss the vision and review the pitch deck.
                 </p>
                 <Link
-                    href="mailto:investors@guzal.com"
+                    href="mailto:founder@guzal.com"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-[#111] px-8 text-base font-bold text-white transition-colors hover:bg-zinc-800"
                 >
-                    Contact Investor Relations
+                    Contact Me
                 </Link>
             </section>
         </div>
