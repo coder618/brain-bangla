@@ -171,7 +171,7 @@ export default function Header() {
 
                     <Link
                         href="/cart"
-                        className="flex items-center gap-2 sm:gap-3 rounded-full bg-[#f84c63] pl-3 sm:pl-4 pr-1 py-1 text-sm font-semibold text-white transition-colors hover:bg-[#e03e53]"
+                        className="flex items-center gap-2 rounded-full bg-[#f84c63] md:pl-3 md:pr-1 md:py-1 p-1 text-sm font-semibold text-white transition-colors hover:bg-[#e03e53]"
                     >
                         <span className="hidden sm:inline">
                             Cart: {cartCount} Item{cartCount !== 1 ? "s" : ""}
