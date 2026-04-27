@@ -7,7 +7,7 @@ create a contact us page
 # Task List
 
 1. Create product page
-2. Pick a name
-3.
+2. Create Video for each product
+3. Create
 
 create a page my account where user will see there orders. and in the header if user login show My Account page, which will show user previous orders. i didnt create the order database yet.
