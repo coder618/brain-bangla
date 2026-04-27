@@ -41,9 +41,9 @@ export default function Footer() {
                             <circle cx="18.5" cy="17.5" r="1.5" />
                         </svg>
                         <div>
-                            <h4 className="font-semibold">Worldwide Shipping</h4>
+                            <h4 className="font-semibold">Whole Bangladesh Shipping</h4>
                             <p className="text-xs text-white/70">
-                                Enjoy free delivery on every order
+                                Enjoy free delivery on bundles orders.
                             </p>
                         </div>
                     </div>
@@ -63,7 +63,9 @@ export default function Footer() {
                         </svg>
                         <div>
                             <h4 className="font-semibold">Money-Back Guarantee</h4>
-                            <p className="text-xs text-white/70">30-day money back guarantee.</p>
+                            <p className="text-xs text-white/70">
+                                Return The Product, if you dont like.
+                            </p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -81,8 +83,8 @@ export default function Footer() {
                             <line x1="2" y1="10" x2="22" y2="10" />
                         </svg>
                         <div>
-                            <h4 className="font-semibold">Secure Payments</h4>
-                            <p className="text-xs text-white/70">Secure checkout verified</p>
+                            <h4 className="font-semibold">Flexible Payment Options</h4>
+                            <p className="text-xs text-white/70">COD and Nagad are available.</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -123,7 +125,7 @@ export default function Footer() {
                             <span className="text-white">l</span>
                         </Link>
                         <p className="text-sm text-white/70 mt-2">
-                            Since 2018 we have been delivering.
+                            Since 2016 we have been delivering.
                         </p>
                     </div>
 

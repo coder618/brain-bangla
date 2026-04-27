@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function HeroBanners() {
     return (
-        <section className="w-full py-6 md:py-8 bg-background-main px-4 sm:px-6 md:px-0">
+        <section className="w-full  md:py-8 pt-4 pb-15   bg-background-main ">
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
                     {/* Left Large Banner */}
-                    <div className="relative flex flex-col justify-center overflow-hidden rounded-2xl sm:rounded-3xl bg-[#40b5a6] p-6 sm:p-8 md:p-12 lg:col-span-2 min-h-[400px] lg:min-h-[500px]">
+                    <div className="relative flex flex-col justify-center overflow-hidden rounded-2xl sm:rounded-3xl bg-[#40b5a6] p-6 sm:p-8 md:p-12 lg:col-span-2 min-h-[350px] lg:min-h-[500px] pb-[120]">
                         {/* Decorative elements */}
                         <svg
                             className="absolute left-0 top-1/2 w-full -translate-y-1/2 opacity-20 pointer-events-none"
@@ -42,8 +42,8 @@ export default function HeroBanners() {
                         </div>
 
                         {/* Placeholder for main image */}
-                        <div className="absolute bottom-0 right-0 hidden h-[80%] w-1/2 bg-black/5 lg:block rounded-tl-full">
-                            <div className="absolute inset-0 flex items-center justify-center text-sm font-medium text-white/50">
+                        <div className="absolute md:bottom-0 -bottom-2 right-0  h-[80%] w-1/2 bg-black/5 lg:block rounded-tl-full ">
+                            <div className="absolute inset-0 flex md:items-center items-end justify-center text-sm font-medium text-white/50">
                                 <img src="/images/boy-with-paper.png" alt="boy-with-paper" />
                             </div>
                         </div>

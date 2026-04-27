@@ -42,6 +42,12 @@ function getClientAuth() {
     return getAuth();
 }
 
+const NAV_LINKS = [
+    { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
+    { title: "Contact", href: "/contact" },
+];
+
 export default function Header() {
     const auth = useMemo(() => getClientAuth(), []);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,60 +119,17 @@ export default function Header() {
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center gap-8 text-[15px] font-bold text-[#111]">
-                    <Link href="/" className="flex items-center gap-1 text-[#f84c63]">
-                        Home
-                        <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                    {NAV_LINKS.map((link) => (
+                        <Link
+                            key={link.title}
+                            href={link.href}
+                            className={`transition-colors hover:text-[#f84c63] ${
+                                link.title === "Home" ? "text-[#f84c63]" : ""
+                            }`}
                         >
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </Link>
-                    <Link
-                        href="/shop"
-                        className="flex items-center gap-1 transition-colors hover:text-[#f84c63]"
-                    >
-                        Shop
-                        <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </Link>
-                    <Link href="/blog" className="transition-colors hover:text-[#f84c63]">
-                        Blog
-                    </Link>
-                    <div className="flex items-center gap-1 cursor-pointer transition-colors hover:text-[#f84c63]">
-                        Pages
-                        <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </div>
-                    <Link href="/contact" className="transition-colors hover:text-[#f84c63]">
-                        Contact
-                    </Link>
+                            {link.title}
+                        </Link>
+                    ))}
                 </nav>
 
                 {/* Icons & Cart */}
@@ -278,34 +241,18 @@ export default function Header() {
             {isMobileMenuOpen ? (
                 <div className="md:hidden absolute top-20 left-4 right-4 z-50 rounded-2xl bg-white p-6 shadow-xl border border-zinc-100">
                     <nav className="flex flex-col gap-4 text-[15px] font-bold text-[#111]">
-                        <Link
-                            href="/"
-                            className="flex items-center gap-2 text-[#f84c63]"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href="/shop"
-                            className="flex items-center gap-2 transition-colors hover:text-[#f84c63]"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Shop
-                        </Link>
-                        <Link
-                            href="/blog"
-                            className="transition-colors hover:text-[#f84c63]"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Blog
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="transition-colors hover:text-[#f84c63]"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            Contact
-                        </Link>
+                        {NAV_LINKS.map((link) => (
+                            <Link
+                                key={link.title}
+                                href={link.href}
+                                className={`transition-colors hover:text-[#f84c63] ${
+                                    link.title === "Home" ? "text-[#f84c63]" : ""
+                                }`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                {link.title}
+                            </Link>
+                        ))}
                     </nav>
                 </div>
             ) : null}
