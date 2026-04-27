@@ -1,12 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
+import { auth, db } from "../lib/firebase";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function CartPage() {
     const { cartItems, removeFromCart, cartTotal, clearCart } = useCart();
+
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        if (!auth) return;
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return unsubscribe;
+    }, []);
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -55,6 +68,32 @@ export default function CartPage() {
 
             if (!response.ok || !data.success) {
                 throw new Error(data.message || "Failed to place order");
+            }
+
+            if (user && db) {
+                try {
+                    await addDoc(collection(db, "orders"), {
+                        userId: user.uid,
+                        orderId: data.orderId || `ORD-${Date.now()}`,
+                        name,
+                        phone,
+                        address,
+                        postCode,
+                        paymentMethod,
+                        transactionId: paymentMethod === "nagad" ? transactionId : null,
+                        items: cartItems.map((item) => ({
+                            id: item.product.id,
+                            title: item.product.title || item.product.name || "Untitled",
+                            quantity: item.quantity,
+                            price: item.product.salePrice || item.product.price,
+                            image: item.product.featuredImage || item.product.image || null,
+                        })),
+                        total: cartTotal,
+                        createdAt: serverTimestamp(),
+                    });
+                } catch (dbError) {
+                    console.error("Error saving order to Firestore:", dbError);
+                }
             }
 
             setSuccessMessage(data.message || "Order successfully placed!");
@@ -197,7 +236,9 @@ export default function CartPage() {
                             )}
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1">Name</label>
+                                <label className="block text-sm font-medium text-zinc-700 mb-1">
+                                    Name
+                                </label>
                                 <input
                                     type="text"
                                     required
@@ -208,7 +249,9 @@ export default function CartPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1">Phone Number</label>
+                                <label className="block text-sm font-medium text-zinc-700 mb-1">
+                                    Phone Number
+                                </label>
                                 <input
                                     type="tel"
                                     required
@@ -219,7 +262,9 @@ export default function CartPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1">Address</label>
+                                <label className="block text-sm font-medium text-zinc-700 mb-1">
+                                    Address
+                                </label>
                                 <textarea
                                     required
                                     rows={3}
@@ -230,7 +275,9 @@ export default function CartPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-zinc-700 mb-1">Post Code</label>
+                                <label className="block text-sm font-medium text-zinc-700 mb-1">
+                                    Post Code
+                                </label>
                                 <input
                                     type="text"
                                     required

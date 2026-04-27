@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Flickity from "flickity";
 import "flickity/css/flickity.css";
 
 interface MiniGalleryProps {
@@ -10,10 +9,13 @@ interface MiniGalleryProps {
     imageHeight?: string | number;
 }
 
-interface ExtendedFlickity extends Flickity {
+// Keep the interface but we won't import Flickity directly at the top
+interface ExtendedFlickity {
     isPointerDown?: boolean;
     x: number;
     settle?: (x: number) => void;
+    on: (event: string, callback: () => void) => void;
+    destroy: () => void;
 }
 
 export default function MiniGallery({
@@ -22,72 +24,74 @@ export default function MiniGallery({
     imageHeight = 200,
 }: MiniGalleryProps) {
     const carouselRef = useRef<HTMLDivElement>(null);
-    const flktyRef = useRef<Flickity | null>(null);
+    const flktyRef = useRef<ExtendedFlickity | null>(null);
 
     useEffect(() => {
         const carouselNode = carouselRef.current;
         if (!carouselNode || images.length === 0) return;
 
-        // Initialize Flickity
-        const flkty = new Flickity(carouselNode, {
-            cellAlign: "left",
-            contain: true,
-            wrapAround: true,
-            freeScroll: true,
-            prevNextButtons: false,
-            pageDots: false,
-            draggable: true,
-        });
-
-        flktyRef.current = flkty;
-
         let reqId: number;
         let isPaused = false;
+        let flkty: ExtendedFlickity | null = null;
 
-        // Speed of the continuous roll
-        // Negative speed moves left-to-right (the content goes to the right)
-        // In Flickity, x is the position. Increasing x moves the carousel left-to-right.
-        const speed = 1.5;
+        // Dynamic import Flickity so it only runs on the client where 'window' is defined
+        import("flickity").then((FlickityModule) => {
+            const Flickity = FlickityModule.default;
 
-        const play = () => {
-            const flktyExtended = flkty as ExtendedFlickity;
-            if (flktyExtended && !isPaused && !flktyExtended.isPointerDown) {
-                flktyExtended.x += speed; // Move from left to right
+            // Initialize Flickity
+            flkty = new Flickity(carouselNode, {
+                cellAlign: "left",
+                contain: true,
+                wrapAround: true,
+                freeScroll: true,
+                prevNextButtons: false,
+                pageDots: false,
+                draggable: true,
+            }) as unknown as ExtendedFlickity;
 
-                // Keep the slider within bounds for wrapAround to work properly
-                // Settle updates the visual position
-                if (typeof flktyExtended.settle === "function") {
-                    flktyExtended.settle(flktyExtended.x);
+            flktyRef.current = flkty;
+
+            // Speed of the continuous roll
+            // Negative speed moves left-to-right (the content goes to the right)
+            // In Flickity, x is the position. Increasing x moves the carousel left-to-right.
+            const speed = 1.5;
+
+            const play = () => {
+                const flktyExtended = flkty;
+                if (flktyExtended && !isPaused && !flktyExtended.isPointerDown) {
+                    flktyExtended.x += speed; // Move from left to right
+
+                    // Keep the slider within bounds for wrapAround to work properly
+                    // Settle updates the visual position
+                    if (typeof flktyExtended.settle === "function") {
+                        flktyExtended.settle(flktyExtended.x);
+                    }
                 }
+                reqId = requestAnimationFrame(play);
+            };
+
+            play();
+
+            const pause = () => {
+                isPaused = true;
+            };
+
+            const resume = () => {
+                isPaused = false;
+            };
+
+            // Pause on drag
+            if (flkty) {
+                flkty.on("dragStart", pause);
+                flkty.on("dragEnd", resume);
             }
-            reqId = requestAnimationFrame(play);
-        };
-
-        play();
-
-        const pause = () => {
-            isPaused = true;
-        };
-
-        const resume = () => {
-            isPaused = false;
-        };
-
-        // Pause on hover
-        // carouselNode.addEventListener("mouseenter", pause);
-        // carouselNode.addEventListener("mouseleave", resume);
-
-        // Pause on drag
-        flkty.on("dragStart", pause);
-        flkty.on("dragEnd", resume);
+        });
 
         return () => {
             cancelAnimationFrame(reqId);
-            if (carouselNode) {
-                // carouselNode.removeEventListener("mouseenter", pause);
-                // carouselNode.removeEventListener("mouseleave", resume);
+            if (flkty) {
+                flkty.destroy();
             }
-            flkty.destroy();
         };
     }, [images]);
 

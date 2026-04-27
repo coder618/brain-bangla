@@ -1,56 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { initializeApp, getApps } from "firebase/app";
+import { useEffect, useState } from "react";
 import {
     GoogleAuthProvider,
     User,
     onAuthStateChanged,
     signInWithPopup,
     signOut,
-    getAuth,
 } from "firebase/auth";
 import { useCart } from "../context/CartContext";
-
-type FirebaseConfig = {
-    apiKey: string;
-    authDomain: string;
-    projectId: string;
-    appId: string;
-};
-
-function getFirebaseConfig(): FirebaseConfig | null {
-    const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-    const authDomain = process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
-    const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-    const appId = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
-
-    if (!apiKey || !authDomain || !projectId || !appId) return null;
-
-    return { apiKey, authDomain, projectId, appId };
-}
-
-function getClientAuth() {
-    const config = getFirebaseConfig();
-    if (!config) return null;
-
-    if (getApps().length === 0) {
-        initializeApp(config);
-    }
-
-    return getAuth();
-}
+import { auth } from "../lib/firebase";
 
 const NAV_LINKS = [
     { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
+    { title: "Shop", href: "/shop" },
     { title: "Contact", href: "/contact" },
+    { title: "About", href: "/about" },
     { title: "Investors", href: "/investors" },
 ];
 
 export default function Header() {
-    const auth = useMemo(() => getClientAuth(), []);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [user, setUser] = useState<User | null>(null);
@@ -102,6 +72,13 @@ export default function Header() {
         }
     }
 
+    // Helper to extract the last name from displayName
+    const getLastName = (name: string | null) => {
+        if (!name) return "";
+        const parts = name.trim().split(" ");
+        return parts.length > 1 ? parts[parts.length - 1] : parts[0];
+    };
+
     return (
         <header className="relative z-40 w-full bg-[#fbdce2] py-4 px-4 sm:px-8">
             <div className="container flex h-16 w-full items-center justify-between rounded-full bg-[#fdfaf2] px-4 sm:px-6 shadow-sm">
@@ -131,30 +108,42 @@ export default function Header() {
                             {link.title}
                         </Link>
                     ))}
+                    {user && (
+                        <Link href="/my-account" className="transition-colors hover:text-[#f84c63]">
+                            My Account
+                        </Link>
+                    )}
                 </nav>
 
                 {/* Icons & Cart */}
                 <div className="flex items-center gap-3 sm:gap-5">
                     {user ? (
-                        <button
-                            onClick={handleLogout}
-                            title="Logout"
-                            className="text-[#f84c63] transition-colors hover:text-red-700"
-                        >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
+                        <div className="flex items-center gap-2">
+                            <span className="hidden lg:inline text-sm font-medium text-zinc-600">
+                                Welcome, {getLastName(user.displayName)}
+                            </span>
+                            <button
+                                onClick={handleLogout}
+                                title="Logout"
+                                className="flex items-center gap-1 text-sm font-semibold text-[#f84c63] transition-colors hover:text-red-700 bg-red-50 px-3 py-1.5 rounded-full"
                             >
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </button>
+                                <span className="hidden sm:inline">Logout</span>
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                    <polyline points="16 17 21 12 16 7" />
+                                    <line x1="21" y1="12" x2="9" y2="12" />
+                                </svg>
+                            </button>
+                        </div>
                     ) : (
                         <button
                             onClick={() => {
@@ -254,6 +243,15 @@ export default function Header() {
                                 {link.title}
                             </Link>
                         ))}
+                        {user && (
+                            <Link
+                                href="/my-account"
+                                className="transition-colors hover:text-[#f84c63]"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                My Account
+                            </Link>
+                        )}
                     </nav>
                 </div>
             ) : null}
