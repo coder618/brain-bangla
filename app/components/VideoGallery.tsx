@@ -98,7 +98,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className="absolute top-3 left-3  px-2 py-2  md:top-8 md:left-8  md:px-4 md:py-3 rounded-md bg-primary z-10 shadow-sm">
+                                    <div className="absolute top-3 left-3  px-2 py-2  md:top-8 md:left-8  md:px-4 md:py-3 rounded-md bg-primary/60 backdrop-blur-md z-10 shadow-sm">
                                         <h3 className="text-white font-bold text-[16px] md:text-lg line-clamp-1">
                                             {video.title}
                                         </h3>
