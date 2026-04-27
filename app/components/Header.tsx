@@ -38,6 +38,19 @@ export default function Header() {
         return unsubscribe;
     }, [auth]);
 
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isMobileMenuOpen]);
+
     async function handleGoogleLogin() {
         setErrorMessage(null);
 
@@ -127,21 +140,7 @@ export default function Header() {
                                 title="Logout"
                                 className="flex items-center gap-1 text-sm font-semibold text-[#f84c63] transition-colors hover:text-red-700 bg-red-50 px-3 py-1.5 rounded-full"
                             >
-                                <span className="hidden sm:inline">Logout</span>
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                                    <polyline points="16 17 21 12 16 7" />
-                                    <line x1="21" y1="12" x2="9" y2="12" />
-                                </svg>
+                                <span>Logout</span>
                             </button>
                         </div>
                     ) : (
@@ -151,21 +150,9 @@ export default function Header() {
                                 setIsModalOpen(true);
                             }}
                             title="Login"
-                            className="text-zinc-900 transition-colors hover:text-[#f84c63]"
+                            className="flex items-center gap-1 text-sm font-semibold text-[#f84c63] transition-colors hover:text-red-700 bg-red-50 px-3 py-1.5 rounded-full"
                         >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
+                            <span>Login</span>
                         </button>
                     )}
 
@@ -229,30 +216,65 @@ export default function Header() {
 
             {/* Mobile Navigation Menu */}
             {isMobileMenuOpen ? (
-                <div className="md:hidden absolute top-20 left-4 right-4 z-50 rounded-2xl bg-white p-6 shadow-xl border border-zinc-100">
-                    <nav className="flex flex-col gap-4 text-[15px] font-bold text-[#111]">
-                        {NAV_LINKS.map((link) => (
-                            <Link
-                                key={link.title}
-                                href={link.href}
-                                className={`transition-colors hover:text-[#f84c63] ${
-                                    link.title === "Home" ? "text-[#f84c63]" : ""
-                                }`}
-                                onClick={() => setIsMobileMenuOpen(false)}
+                <div className="md:hidden fixed inset-0 z-50 bg-white flex flex-col">
+                    <div className="flex h-16 items-center justify-between px-4 sm:px-6 mt-4">
+                        <Link
+                            href="/"
+                            className="flex items-center text-3xl font-black tracking-tighter"
+                            style={{ fontFamily: "system-ui, sans-serif" }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            <span className="text-[#f5415f]">g</span>
+                            <span className="text-[#8cc63f]">ü</span>
+                            <span className="text-[#f7931e]">z</span>
+                            <span className="text-[#f5415f]">a</span>
+                            <span className="text-[#29abe2]">l</span>
+                        </Link>
+                        <button
+                            className="flex items-center justify-center text-zinc-900 transition-colors hover:text-[#f84c63] p-2"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-label="Close menu"
+                        >
+                            <svg
+                                width="28"
+                                height="28"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             >
-                                {link.title}
-                            </Link>
-                        ))}
-                        {user && (
-                            <Link
-                                href="/my-account"
-                                className="transition-colors hover:text-[#f84c63]"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                My Account
-                            </Link>
-                        )}
-                    </nav>
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div className="flex flex-1 flex-col items-center justify-center pb-20">
+                        <nav className="flex flex-col items-center gap-8 text-2xl font-bold text-[#111]">
+                            {NAV_LINKS.map((link) => (
+                                <Link
+                                    key={link.title}
+                                    href={link.href}
+                                    className={`transition-colors hover:text-[#f84c63] ${
+                                        link.title === "Home" ? "text-[#f84c63]" : ""
+                                    }`}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.title}
+                                </Link>
+                            ))}
+                            {user && (
+                                <Link
+                                    href="/my-account"
+                                    className="transition-colors hover:text-[#f84c63]"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    My Account
+                                </Link>
+                            )}
+                        </nav>
+                    </div>
                 </div>
             ) : null}
 
