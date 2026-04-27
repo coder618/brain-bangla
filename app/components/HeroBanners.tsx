@@ -44,7 +44,7 @@ export default function HeroBanners() {
                         {/* Placeholder for main image */}
                         <div className="absolute bottom-0 right-0 hidden h-[80%] w-1/2 bg-black/5 lg:block rounded-tl-full">
                             <div className="absolute inset-0 flex items-center justify-center text-sm font-medium text-white/50">
-                                <img src="/image/boy-with-paper.png" alt="boy-with-paper" />
+                                <img src="/images/boy-with-paper.png" alt="boy-with-paper" />
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export default function HeroBanners() {
                             {/* Placeholder for top right image */}
                             <div>
                                 <img
-                                    src="/image/wating-girl.png"
+                                    src="/images/wating-girl.png"
                                     alt=""
                                     className="absolute -top-5 w-[220px] right-1"
                                 />
@@ -77,15 +77,16 @@ export default function HeroBanners() {
                         <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl sm:rounded-3xl bg-[#eb3a56] p-6 sm:p-8 text-white min-h-[200px] sm:min-h-[240px]">
                             <div className="relative z-10 w-full max-w-[200px] sm:max-w-[220px]">
                                 <h3 className="mb-2 sm:mb-3 text-2xl sm:text-3xl font-bold leading-tight">
-                                    Problem Solve Skill বাড়বে
+                                    Problem Solving Skill বাড়বে
                                 </h3>
                                 <p className="mb-6 text-md text-white/90">
-                                    Problem Solve skill বাড়ানোর জন্য আমাদের আছে <b>Brain Booster</b>
+                                    Problem Solving skill বাড়ানোর জন্য আমাদের আছে{" "}
+                                    <b>Brain Booster</b>
                                 </p>
                             </div>
                             {/* Placeholder for bottom right image */}
                             <img
-                                src="/image/thinking.png"
+                                src="/images/thinking.png"
                                 alt=""
                                 className="absolute -top-5 w-[420px] -right-35"
                             />

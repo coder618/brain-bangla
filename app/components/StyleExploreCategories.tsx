@@ -7,7 +7,7 @@ export default function StyleExploreCategories() {
             titleColor: "text-[#4a8cd5]",
             bgColor: "bg-[#4a8cd5]",
             href: "/shop?category=footwear",
-            image: "/image/tangram-puzzle-small.png",
+            image: "/images/tangram-puzzle-small.png",
             description: "মেধা বিকাশের জন্যে সেরা পাজল",
         },
         {
@@ -15,7 +15,7 @@ export default function StyleExploreCategories() {
             titleColor: "text-[#f15a24]",
             bgColor: "bg-[#660000]",
             href: "/shop?category=focus-challenge",
-            image: "/image/focus-challenge.png",
+            image: "/images/focus-challenge.png",
             description: "ধৈর্য এবং মনোযোগ বৃদ্ধির সেরা খেলা",
         },
         {
@@ -23,7 +23,7 @@ export default function StyleExploreCategories() {
             titleColor: "text-[#7ba95c]",
             bgColor: "bg-[#7ba95c]",
             href: "/shop?category=brain-booster",
-            image: "/image/brain-booster.png",
+            image: "/images/brain-booster.png",
             description: "Problem Solving Skill বৃদ্ধি করে",
         },
     ];
