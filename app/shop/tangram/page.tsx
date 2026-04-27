@@ -1,9 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ProductHero from "../../components/product/ProductHero";
-import ProductBenefits from "../../components/product/ProductBenefits";
-import ProductIncludes from "../../components/product/ProductIncludes";
+import ProductGallery from "@/app/components/ProductGallery";
 
 export const metadata = {
     title: "Tangram Kit | Shop",
@@ -32,7 +30,7 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
             img: "/images/thinking.png",
         },
         {
-            title: "Tangram ছোট বড় সবার খেলনা",
+            title: "Tangram ছোট বড় সবার জন্য",
             description:
                 "এটা কেবল ছোটদের খেলনা নয়, নতুন কোনো আকৃতি বানানো বড়দের জন্য চ্যালেঞ্জিং, তাই ছোটদের পাশাপাশি বড়রাও এটি Enjoy করতে পারবে। ",
             img: "/images/thinking.png",
@@ -106,6 +104,28 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
                             </div>
                         ))}
                     </div>
+                </div>
+            </div>
+            <div className="product-gallery py-16 md:py-24 bg-white">
+                <div className="container mx-auto px-4 max-w-5xl">
+                    <div className="text-center mb-16">
+                        <span className="text-[#f84c63] font-semibold tracking-wider uppercase text-sm mb-3 block">
+                            Gallery
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                            See Tangram in Action
+                        </h2>
+                    </div>
+                    <ProductGallery
+                        images={[
+                            "/images/tangram-puzzle-small.png",
+                            "/images/thinking--.png",
+                            "/images/thinking-2.jpg",
+                            "/images/brain-booster.png",
+                            "/images/boy-with-paper.png",
+                            "/images/wating-girl.png",
+                        ]}
+                    />
                 </div>
             </div>
 
@@ -195,12 +215,6 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div className="mb-10 text-sm">
-                <Link href="/shop" className="text-zinc-500 hover:text-[#f84c63] transition-colors">
-                    &larr; Back to Shop
-                </Link>
             </div>
         </div>
     );
