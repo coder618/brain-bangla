@@ -1,0 +1,10 @@
+{
+  "id": "product-3",
+  "title": "Soft Plush Bear",
+  "description": "Ultra-soft plush bear, perfect for bedtime and travel.",
+  "price": 18.5,
+  "salePrice": 14.5,
+  "featuredImage": "/vercel.svg",
+  "gallery": ["/vercel.svg", "/next.svg"],
+  "detailHtmlPath": "/product-data/detail/product-3.html"
+}

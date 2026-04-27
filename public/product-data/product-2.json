@@ -1,0 +1,10 @@
+{
+  "id": "product-2",
+  "title": "Mini Building Blocks Set",
+  "description": "Colorful blocks for creative builds. Includes 120 pieces.",
+  "price": 24.0,
+  "salePrice": 19.0,
+  "featuredImage": "/globe.svg",
+  "gallery": ["/globe.svg", "/window.svg", "/file.svg"],
+  "detailHtmlPath": "/product-data/detail/product-2.html"
+}
