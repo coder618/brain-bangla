@@ -14,10 +14,10 @@ export default function ProductBanner({
     bgColor = "#fbdce2",
 }: ProductBannerProps) {
     return (
-        <div className={`banner py-15`} style={{ backgroundColor: bgColor }}>
+        <div className="banner md:py-15 py-8" style={{ backgroundColor: bgColor }}>
             <div className="container">
-                <h1 className="text-6xl font-bold text-center">{title}</h1>
-                <h2 className="text-3xl text-center mt-5">{subtitle}</h2>
+                <h1 className="text-2xl md:text-6xl font-bold text-center">{title}</h1>
+                <h2 className="text-xl md:text-3xl text-center mt-5">{subtitle}</h2>
             </div>
 
             <div className="my-10 flex justify-center w-full px-4">

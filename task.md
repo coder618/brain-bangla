@@ -9,5 +9,6 @@ create a contact us page
 1. Create product page
 2. Create Video for each product
 3. Add schema in product page
+4. single page pricing fix
 
 create a page my account where user will see there orders. and in the header if user login show My Account page, which will show user previous orders. i didnt create the order database yet.
