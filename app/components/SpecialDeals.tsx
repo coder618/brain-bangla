@@ -59,7 +59,7 @@ export default function SpecialDeals() {
                                 <span className="relative z-10">মাত্র 999tk</span>
                             </span>
 
-                            <ul className="text-lg flex gap-2">
+                            <ul className="text-lg flex gap-2 font-normal">
                                 <li>1. Tangram Puzzle Magnetic</li>
                                 <li>2. Electric Buzz Game</li>
                                 <li>3. Brain Booster</li>

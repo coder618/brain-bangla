@@ -32,13 +32,13 @@ export default function StyleExploreCategories() {
         <section className="mx-auto w-full max-w-6xl px-6 py-20 text-center">
             <div className="mb-14">
                 <span
-                    className="mb-3 block text-sm tracking-[0.2em] text-[#f84c63] uppercase"
+                    className="mb-3 block text-sm tracking-[0.2em] text-[#f84c63] uppercase font-bold"
                     style={{ fontFamily: "system-ui, sans-serif" }}
                 >
                     Education Toys
                 </span>
                 <h2 className="text-4xl font-extrabold text-black md:text-5xl">
-                    Smart অভিভাবকের প্রথম পছন্দ
+                    Smart অভিভাবকের পছন্দ
                 </h2>
             </div>
 

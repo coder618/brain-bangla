@@ -1,63 +1,7 @@
 "use client";
 
 import ProductCard from "./ProductCard";
-
-const ProductsArray = {
-    products: [
-        {
-            id: 1,
-            slug: "tangram-puzzle-magnetic",
-            name: "Tangram Puzzle (Magnetic)",
-            price: 360,
-            fetImage: "/images/tangram-puzzle-small.png",
-            images: [
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-            ],
-            description: "Tangram puzzle with magnetic pieces.",
-            stock: 10,
-            rating: 4.5,
-            reviewCount: 10,
-        },
-        {
-            id: 2,
-            slug: "electric-buzz-game",
-            name: "Electric Buzz Game",
-            price: 500,
-            fetImage: "/images/tangram-puzzle-small.png",
-            images: [
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-                "/images/tangram-puzzle-small.png",
-            ],
-            description: "Help to increase focus skills.",
-            stock: 10,
-            rating: 4.5,
-            reviewCount: 10,
-        },
-        {
-            id: 2,
-            slug: "brain-booster",
-            name: "Brain Booster",
-            price: 300,
-            fetImage: "/images/brain-booster.png",
-            images: [
-                "/images/brain-booster.png",
-                "/images/brain-booster.png",
-                "/images/brain-booster.png",
-                "/images/brain-booster.png",
-            ],
-            description: "Help to increase focus skills.",
-            stock: 10,
-            rating: 4.5,
-            reviewCount: 10,
-        },
-    ],
-    lastUpdateTime: "28-04-26",
-};
+import ProductsArray from "../data/products.json";
 
 export default function ProductList() {
     const products = ProductsArray.products;
