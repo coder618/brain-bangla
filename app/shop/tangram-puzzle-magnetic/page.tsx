@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import ProductGallery from "@/app/components/ProductGallery";
 import ProductBanner from "@/app/components/ProductBanner";
+import HalfAndHalf from "@/app/components/product/HalfAndHalf";
 
 export const metadata = {
     title: "Tangram Kit | Shop",
@@ -46,73 +45,20 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
                 videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
             />
 
-            <div className="why-buy py-16 md:py-24 bg-white">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <div className="text-center mb-16 md:mb-20">
-                        <span className="text-[#f84c63] font-semibold tracking-wider uppercase text-sm mb-3 block">
-                            Benefits
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                            কেন কিনবেন Tangram Puzzle?
-                        </h2>
-                    </div>
+            <HalfAndHalf why_arr={why_arr} />
 
-                    <div className="space-y-16 md:space-y-24">
-                        {why_arr.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${
-                                    index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                                }`}
-                            >
-                                <div className="w-full md:w-1/2">
-                                    <div className="relative aspect-square  rounded-2xl overflow-hidden ">
-                                        <Image
-                                            src={item.img}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover hover:scale-105 transition-transform duration-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-1/2 space-y-5">
-                                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-50 text-[#f84c63] font-bold text-xl mb-2">
-                                        0{index + 1}
-                                    </div>
-                                    <h3 className="text-xl md:text-3xl font-bold text-gray-800 leading-tight">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-gray-600 md:text-[20px] text-[18px] leading-[160%]">
-                                        {item.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div className="product-gallery py-16 md:py-24 bg-white">
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <div className="text-center mb-16">
-                        <span className="text-[#f84c63] font-semibold tracking-wider uppercase text-sm mb-3 block">
-                            Gallery
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                            See Tangram in Action
-                        </h2>
-                    </div>
-                    <ProductGallery
-                        images={[
-                            "/images/tangram-puzzle-small.png",
-                            "/images/thinking--.png",
-                            "/images/thinking-2.jpg",
-                            "/images/brain-booster.png",
-                            "/images/boy-with-paper.png",
-                            "/images/wating-girl.png",
-                        ]}
-                    />
-                </div>
-            </div>
+            <ProductGallery
+                title="See Tangram in Action"
+                subtitle="Gallery"
+                images={[
+                    "/images/tangram-puzzle-small.png",
+                    "/images/thinking--.png",
+                    "/images/thinking-2.jpg",
+                    "/images/brain-booster.png",
+                    "/images/boy-with-paper.png",
+                    "/images/wating-girl.png",
+                ]}
+            />
 
             <div className="box-contain my-24 bg-gray-50/50 py-16">
                 <div className="container mx-auto px-4 max-w-5xl">
