@@ -1,8 +1,11 @@
 import express from "express";
 import * as logger from "firebase-functions/logger";
+import nodemailer from "nodemailer";
 import { verifyAuth, AuthenticatedRequest } from "../middleware/auth";
 import { connectToDatabase } from "../lib/mongoose";
 import Order from "../models/Order";
+
+const ADMIN_EMAIL = "iamahadul@gmail.com";
 
 const router = express.Router();
 
@@ -62,7 +65,76 @@ router.post("/place-order", async (req: express.Request, res: express.Response) 
 
         logger.info("Order placed successfully. Order ID: %s", orderId);
 
-        // Optional: you could also trigger a confirmation email here using the nodemailer setup
+        // Send email notification to Admin
+        try {
+            const transporter = nodemailer.createTransport({
+                host: process.env.SMTP_HOST,
+                port: parseInt(process.env.SMTP_PORT || "587", 10),
+                secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
+                auth: {
+                    user: process.env.SMTP_USER,
+                    pass: process.env.SMTP_PASS,
+                },
+            });
+
+            const itemsHtml = items
+                .map(
+                    (item: { title: string; quantity: number; price: number }) => `
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${item.title}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${item.quantity}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">৳${item.price}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">৳${item.quantity * item.price}</td>
+                </tr>
+            `,
+                )
+                .join("");
+
+            const htmlContent = `
+                <h2>New Order Placed</h2>
+                <p>A new order has been placed successfully.</p>
+                
+                <h3>Customer Details:</h3>
+                <ul>
+                    <li><strong>Order ID:</strong> ${orderId}</li>
+                    <li><strong>Customer Name:</strong> ${name}</li>
+                    <li><strong>Phone:</strong> ${phone}</li>
+                    <li><strong>Address:</strong> ${address}</li>
+                    <li><strong>Total:</strong> ৳${total}</li>
+                    <li><strong>Payment Method:</strong> ${paymentMethod || "cod"}</li>
+                    ${transactionId ? `<li><strong>Transaction ID:</strong> ${transactionId}</li>` : ""}
+                </ul>
+
+                <h3>Order Items:</h3>
+                <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Product</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Qty</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Price</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${itemsHtml}
+                    </tbody>
+                </table>
+                <br/>
+                <p>Please log in to the admin dashboard to view the full order details.</p>
+            `;
+
+            await transporter.sendMail({
+                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@example.com",
+                to: ADMIN_EMAIL,
+                subject: "New Order Received: " + orderId,
+                html: htmlContent,
+            });
+
+            logger.info("Admin notification email sent for order: %s", orderId);
+        } catch (emailError) {
+            logger.error("Failed to send admin notification email", emailError);
+            // Do not throw error here, so the order process still completes successfully
+        }
 
         res.status(200).json({
             success: true,
@@ -79,8 +151,6 @@ router.post("/place-order", async (req: express.Request, res: express.Response) 
         res.status(500).json({ error: "Failed to place order" });
     }
 });
-
-const ADMIN_EMAIL = "iamahadul@gmail.com";
 
 const verifyAdmin = (
     req: AuthenticatedRequest,

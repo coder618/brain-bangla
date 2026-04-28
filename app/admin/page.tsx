@@ -176,6 +176,7 @@ export default function AdminPage() {
                             <th className="px-6 py-4 font-semibold">Date</th>
                             <th className="px-6 py-4 font-semibold">Customer</th>
                             <th className="px-6 py-4 font-semibold">Total</th>
+                            <th className="px-6 py-4 font-semibold">Payment</th>
                             <th className="px-6 py-4 font-semibold">Status</th>
                             <th className="px-6 py-4 font-semibold">Actions</th>
                         </tr>
@@ -204,6 +205,16 @@ export default function AdminPage() {
                                     </td>
                                     <td className="px-6 py-4 font-medium">
                                         ৳{order.total.toFixed(2)}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="uppercase text-xs font-semibold text-zinc-700 bg-zinc-100 px-2 py-1 rounded-full inline-block">
+                                            {order.paymentMethod || "COD"}
+                                        </div>
+                                        {order.transactionId && (
+                                            <div className="text-xs text-zinc-500 mt-1">
+                                                Trx: {order.transactionId}
+                                            </div>
+                                        )}
                                     </td>
                                     <td className="px-6 py-4">
                                         <span
@@ -267,10 +278,48 @@ export default function AdminPage() {
             {/* Edit Modal */}
             {editingOrder && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-xl">
                         <h2 className="mb-4 text-xl font-bold">
                             Edit Order: {editingOrder.orderId}
                         </h2>
+
+                        <div className="mb-6 space-y-4 rounded-lg bg-zinc-50 p-4 text-sm">
+                            <h3 className="font-semibold text-zinc-900">Order Summary</h3>
+                            <ul className="divide-y divide-zinc-200">
+                                {editingOrder.items?.map((item, idx) => (
+                                    <li key={idx} className="flex justify-between py-2">
+                                        <span className="text-zinc-700">
+                                            {item.title}{" "}
+                                            <span className="text-zinc-400">x{item.quantity}</span>
+                                        </span>
+                                        <span className="font-medium text-zinc-900">
+                                            ৳{(item.price * item.quantity).toFixed(2)}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="flex justify-between border-t border-zinc-200 pt-2 font-bold text-zinc-900">
+                                <span>Total</span>
+                                <span>৳{editingOrder.total.toFixed(2)}</span>
+                            </div>
+                            <div className="border-t border-zinc-200 pt-2 space-y-1">
+                                <div className="flex justify-between">
+                                    <span className="text-zinc-600">Payment Method:</span>
+                                    <span className="font-medium uppercase">
+                                        {editingOrder.paymentMethod || "COD"}
+                                    </span>
+                                </div>
+                                {editingOrder.transactionId && (
+                                    <div className="flex justify-between">
+                                        <span className="text-zinc-600">Transaction ID:</span>
+                                        <span className="font-medium">
+                                            {editingOrder.transactionId}
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
                         <form onSubmit={handleUpdateOrder} className="space-y-4">
                             <div>
                                 <label className="mb-1 block text-sm font-medium text-zinc-700">

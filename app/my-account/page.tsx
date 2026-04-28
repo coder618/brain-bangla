@@ -129,7 +129,7 @@ export default function MyAccountPage() {
                                 <div className="text-left sm:text-right">
                                     <p className="text-sm text-zinc-500 mb-1">Total</p>
                                     <p className="font-bold text-zinc-900">
-                                        ${order.total.toFixed(2)}
+                                        ৳{order.total.toFixed(2)}
                                     </p>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ export default function MyAccountPage() {
                                                 </p>
                                             </div>
                                             <div className="font-medium">
-                                                ${(item.price * item.quantity).toFixed(2)}
+                                                ৳{(item.price * item.quantity).toFixed(2)}
                                             </div>
                                         </div>
                                     ))}
