@@ -5,17 +5,52 @@ import HalfAndHalf from "@/app/components/product/HalfAndHalf";
 import ProductPurchaseDetails from "@/app/components/product/ProductPurchaseDetails";
 
 export const metadata = {
-    title: "Tangram Kit | Shop",
+    title: "Tangram Puzzle (Magnetic) | Shop",
     description:
         "Tangram is an ancient puzzle game that builds cognitive ability and spatial awareness in children.",
 };
 
+const domain = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+// Edit this object to update the SEO Product schema data manually
+const seoData = {
+    name: "Tangram Puzzle (Magnetic)",
+    description:
+        "Tangram is an ancient puzzle game that builds cognitive ability and spatial awareness in children.",
+    image: `${domain}/images/tangram-puzzle-small.png`,
+    sku: "TANGRAM-MAG-01",
+    brand: "TooyBD",
+    url: `${domain}/shop/tangram-puzzle-magnetic`,
+    priceCurrency: "BDT",
+    price: 360,
+    availability: "https://schema.org/InStock", // e.g., "https://schema.org/InStock" or "https://schema.org/OutOfStock"
+};
+
 export default function TangramPage() {
-    const description = `Tangram is an ancient puzzle game that continues to amaze us today. With just seven geometric shapes, you can create thousands of designs—boats, tigers, rockets, houses, and more. 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: seoData.name,
+        description: seoData.description,
+        image: seoData.image,
+        sku: seoData.sku,
+        brand: {
+            "@type": "Brand",
+            name: seoData.brand,
+        },
+        offers: {
+            "@type": "Offer",
+            url: seoData.url,
+            priceCurrency: seoData.priceCurrency,
+            price: seoData.price,
+            availability: seoData.availability,
+            itemCondition: "https://schema.org/NewCondition",
+        },
+    };
 
-Playing with these triangles and quadrilaterals boosts your child's cognitive ability and spatial awareness, helping their intellect flourish.
-
-Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordination, deep focus, and patience.`;
+    const PurchaseDescription = `Tangram is an ancient puzzle game that continues to amaze us today. With just seven geometric shapes, you can create thousands of designs—boats, tigers, rockets, houses, and more. 
+    Playing with these triangles and quadrilaterals boosts your child's cognitive ability and spatial awareness, helping their intellect flourish.
+    Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordination, deep focus, and patience.`;
 
     const why_arr = [
         {
@@ -58,6 +93,10 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
 
     return (
         <div className="">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <ProductBanner
                 title="Tangram Puzzle(Magnetic)"
                 subtitle="মেধা বিকাশের জন্যে সেরা পাজল Tangram"
@@ -82,7 +121,7 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
             <ProductPurchaseDetails
                 id="tangram-puzzle-magnetic"
                 title="Tangram Puzzle (Magnetic)"
-                description={description}
+                description={PurchaseDescription}
                 price={360}
                 image="/images/tangram-puzzle-small.png"
                 boxContents={boxContents}
