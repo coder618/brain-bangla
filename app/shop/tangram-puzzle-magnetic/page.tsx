@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ProductGallery from "@/app/components/ProductGallery";
+import ProductBanner from "@/app/components/ProductBanner";
 
 export const metadata = {
     title: "Tangram Kit | Shop",
@@ -39,27 +40,11 @@ Unlike the temporary joy of screen time, Tangram builds hand-eye-brain coordinat
 
     return (
         <div className="">
-            <div className="banner bg-[#fbdce2] py-15">
-                <div className="container">
-                    <h1 className="text-6xl font-bold text-center">Tangram Puzzle(Magnetic)</h1>
-                    <h2 className="text-3xl text-center mt-5">
-                        মেধা বিকাশের জন্যে সেরা পাজল Tangram
-                    </h2>
-                </div>
-
-                <div className="my-10 flex justify-center w-full px-4">
-                    <div className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-lg">
-                        <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
+            <ProductBanner
+                title="Tangram Puzzle(Magnetic)"
+                subtitle="মেধা বিকাশের জন্যে সেরা পাজল Tangram"
+                videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+            />
 
             <div className="why-buy py-16 md:py-24 bg-white">
                 <div className="container mx-auto px-4 max-w-5xl">

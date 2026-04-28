@@ -6,7 +6,7 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="relative mt-20 w-full bg-[#1e564d] text-white">
+        <footer className="relative  w-full bg-[#1e564d] text-white">
             {/* Scalloped top border effect using radial gradients */}
             <div className="absolute left-0 right-0 -top-6 h-6 w-full overflow-hidden leading-none">
                 <div
@@ -160,6 +160,11 @@ export default function Footer() {
                                     className="hover:text-white transition-colors"
                                 >
                                     Investor Relations
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/about" className="hover:text-white transition-colors">
+                                    About Us
                                 </Link>
                             </li>
                         </ul>

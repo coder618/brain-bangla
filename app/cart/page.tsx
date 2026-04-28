@@ -191,7 +191,7 @@ export default function CartPage() {
                                     <h3 className="font-semibold text-zinc-900">{title}</h3>
                                     <p className="text-sm text-zinc-500">Qty: {item.quantity}</p>
                                     <p className="font-medium mt-1">
-                                        {typeof price === "number" ? `$${price.toFixed(2)}` : price}
+                                        {typeof price === "number" ? `৳${price.toFixed(2)}` : price}
                                     </p>
                                 </div>
                                 <button
@@ -225,7 +225,7 @@ export default function CartPage() {
 
                         <div className="mb-6 flex justify-between items-center text-lg font-semibold border-b border-zinc-100 pb-4">
                             <span>Total</span>
-                            <span>${cartTotal.toFixed(2)}</span>
+                            <span>৳{cartTotal.toFixed(2)}</span>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-4">

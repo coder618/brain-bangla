@@ -29,7 +29,9 @@ function formatPrice(price: Product["price"]) {
             style: "currency",
             currency: "USD",
             maximumFractionDigits: 2,
-        }).format(price);
+        })
+            .format(price)
+            .replace("$", "৳");
     }
 
     if (typeof price === "string" && price.trim().length > 0) {
