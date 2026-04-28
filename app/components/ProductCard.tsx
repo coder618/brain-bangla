@@ -51,7 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     return (
         <>
-            <Link href={`/shop/${product.id ?? product.title ?? "product"}`}>
+            <Link href={`/shop/${product.slug ?? product.slug ?? "product"}`}>
                 <article className="overflow-hidden rounded-2xl border border-black/8 bg-white shadow-sm transition hover:shadow-md">
                     <div className="relative aspect-square w-full bg-zinc-100">
                         {image ? (

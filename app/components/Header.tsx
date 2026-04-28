@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
     GoogleAuthProvider,
@@ -21,6 +22,7 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+    const pathname = usePathname();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [user, setUser] = useState<User | null>(null);
@@ -110,19 +112,29 @@ export default function Header() {
 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center gap-8 text-[15px] font-bold text-[#111]">
-                    {NAV_LINKS.map((link) => (
+                    {NAV_LINKS.map((link) => {
+                        const isActive =
+                            pathname === link.href ||
+                            (link.href !== "/" && pathname?.startsWith(link.href));
+                        return (
+                            <Link
+                                key={link.title}
+                                href={link.href}
+                                className={`transition-colors hover:text-[#f84c63] ${
+                                    isActive ? "text-[#f84c63]" : ""
+                                }`}
+                            >
+                                {link.title}
+                            </Link>
+                        );
+                    })}
+                    {user && (
                         <Link
-                            key={link.title}
-                            href={link.href}
+                            href="/my-account"
                             className={`transition-colors hover:text-[#f84c63] ${
-                                link.title === "Home" ? "text-[#f84c63]" : ""
+                                pathname === "/my-account" ? "text-[#f84c63]" : ""
                             }`}
                         >
-                            {link.title}
-                        </Link>
-                    ))}
-                    {user && (
-                        <Link href="/my-account" className="transition-colors hover:text-[#f84c63]">
                             My Account
                         </Link>
                     )}
@@ -252,22 +264,29 @@ export default function Header() {
                     </div>
                     <div className="flex flex-1 flex-col items-center justify-center pb-20">
                         <nav className="flex flex-col items-center gap-8 text-2xl font-bold text-[#111]">
-                            {NAV_LINKS.map((link) => (
-                                <Link
-                                    key={link.title}
-                                    href={link.href}
-                                    className={`transition-colors hover:text-[#f84c63] ${
-                                        link.title === "Home" ? "text-[#f84c63]" : ""
-                                    }`}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.title}
-                                </Link>
-                            ))}
+                            {NAV_LINKS.map((link) => {
+                                const isActive =
+                                    pathname === link.href ||
+                                    (link.href !== "/" && pathname?.startsWith(link.href));
+                                return (
+                                    <Link
+                                        key={link.title}
+                                        href={link.href}
+                                        className={`transition-colors hover:text-[#f84c63] ${
+                                            isActive ? "text-[#f84c63]" : ""
+                                        }`}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {link.title}
+                                    </Link>
+                                );
+                            })}
                             {user && (
                                 <Link
                                     href="/my-account"
-                                    className="transition-colors hover:text-[#f84c63]"
+                                    className={`transition-colors hover:text-[#f84c63] ${
+                                        pathname === "/my-account" ? "text-[#f84c63]" : ""
+                                    }`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     My Account

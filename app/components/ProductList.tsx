@@ -1,100 +1,79 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import ProductCard, { Product } from "./ProductCard";
+import ProductCard from "./ProductCard";
 
-const MAX_PRODUCTS = 100;
+const ProductsArray = {
+    products: [
+        {
+            id: 1,
+            slug: "tangram-puzzle-magnetic",
+            name: "Tangram Puzzle (Magnetic)",
+            price: 360,
+            fetImage: "/images/tangram-puzzle-small.png",
+            images: [
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+            ],
+            description: "Tangram puzzle with magnetic pieces.",
+            stock: 10,
+            rating: 4.5,
+            reviewCount: 10,
+        },
+        {
+            id: 2,
+            slug: "electric-buzz-game",
+            name: "Electric Buzz Game",
+            price: 500,
+            fetImage: "/images/tangram-puzzle-small.png",
+            images: [
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+                "/images/tangram-puzzle-small.png",
+            ],
+            description: "Help to increase focus skills.",
+            stock: 10,
+            rating: 4.5,
+            reviewCount: 10,
+        },
+        {
+            id: 2,
+            slug: "brain-booster",
+            name: "Brain Booster",
+            price: 300,
+            fetImage: "/images/brain-booster.png",
+            images: [
+                "/images/brain-booster.png",
+                "/images/brain-booster.png",
+                "/images/brain-booster.png",
+                "/images/brain-booster.png",
+            ],
+            description: "Help to increase focus skills.",
+            stock: 10,
+            rating: 4.5,
+            reviewCount: 10,
+        },
+    ],
+    lastUpdateTime: "28-04-26",
+};
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+    const products = ProductsArray.products;
 
-  useEffect(() => {
-    let isActive = true;
-
-    async function loadProducts() {
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const loadedProducts: Product[] = [];
-
-        for (let i = 1; i <= MAX_PRODUCTS; i += 1) {
-          const response = await fetch(`/product-data/product-${i}.json`);
-          if (!response.ok) {
-            break;
-          }
-
-          const product = (await response.json()) as Product;
-          loadedProducts.push(product);
-        }
-
-        const productsWithDetails = await Promise.all(
-          loadedProducts.map(async (product) => {
-            if (typeof product.detailHtmlPath !== "string") return product;
-
-            try {
-              const detailResponse = await fetch(product.detailHtmlPath);
-              if (!detailResponse.ok) return product;
-              const detailHtml = await detailResponse.text();
-              return { ...product, detailHtml };
-            } catch {
-              return product;
-            }
-          })
-        );
-
-        if (isActive) {
-          setProducts(productsWithDetails);
-        }
-      } catch {
-        if (isActive) {
-          setError("Unable to load products right now.");
-        }
-      } finally {
-        if (isActive) {
-          setIsLoading(false);
-        }
-      }
+    if (products.length === 0) {
+        return <p className="text-sm text-zinc-600">No products found.</p>;
     }
 
-    loadProducts();
-
-    return () => {
-      isActive = false;
-    };
-  }, []);
-
-  if (isLoading) {
     return (
-      <p className="text-sm text-zinc-600">Loading products...</p>
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4 px-4 sm:px-0">
+            {products.map((product, index) => (
+                <ProductCard
+                    key={`${product.id ?? product.name ?? "product"}-${index}`}
+                    product={{ ...product, image: product.fetImage }} // Map fetImage to image so ProductCard can display it
+                />
+            ))}
+        </div>
     );
-  }
-
-  if (error) {
-    return <p className="text-sm text-red-600">{error}</p>;
-  }
-
-  if (products.length === 0) {
-    return (
-      <p className="text-sm text-zinc-600">
-        No products found. Add files like
-        {" "}
-        <code>/product-data/product-1.json</code>
-        {" "}
-        and
-        {" "}
-        <code>/product-data/product-2.json</code>.
-      </p>
-    );
-  }
-
-  return (
-    <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4 px-4 sm:px-0">
-      {products.map((product, index) => (
-        <ProductCard key={`${product.id ?? product.title ?? "product"}-${index}`} product={product} />
-      ))}
-    </div>
-  );
 }
