@@ -13,24 +13,31 @@ export default function ContactPage() {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
-        // We're using Web3Forms (a free third-party form API)
-        // You can replace the access key below with your own from web3forms.com
-        formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
-
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const baseUrl =
+                process.env.NEXT_PUBLIC_API_BASE_URL ||
+                "http://127.0.0.1:5001/your-firebase-project-id/us-central1/api";
+
+            const response = await fetch(`${baseUrl}/api/contact`, {
                 method: "POST",
-                body: formData,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: formData.get("name"),
+                    email: formData.get("email"),
+                    message: formData.get("message"),
+                }),
             });
 
             const data = await response.json();
 
-            if (data.success) {
+            if (response.ok && data.success) {
                 setStatus("success");
                 form.reset();
             } else {
                 setStatus("error");
-                setErrorMessage(data.message || "Something went wrong.");
+                setErrorMessage(data.message || data.error || "Something went wrong.");
             }
         } catch (error) {
             setStatus("error");
@@ -76,7 +83,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-zinc-900">Phone</h4>
-                                    <p className="text-zinc-600">+1 (555) 123-4567</p>
+                                    <p className="text-zinc-600">+8801624217742</p>
                                 </div>
                             </div>
 
@@ -98,7 +105,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-zinc-900">Email</h4>
-                                    <p className="text-zinc-600">support@toyswebsite.com</p>
+                                    <p className="text-zinc-600">iamahadul@gmail.com</p>
                                 </div>
                             </div>
 
@@ -120,11 +127,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-zinc-900">Address</h4>
-                                    <p className="text-zinc-600">
-                                        123 Toy Street, Playville
-                                        <br />
-                                        NY 10001, United States
-                                    </p>
+                                    <p className="text-zinc-600">Dhaka, Bangladesh</p>
                                 </div>
                             </div>
                         </div>
@@ -168,12 +171,6 @@ export default function ContactPage() {
                                     {errorMessage}
                                 </div>
                             )}
-
-                            <input
-                                type="hidden"
-                                name="subject"
-                                value="New Contact Form Submission"
-                            />
 
                             <div>
                                 <label
@@ -259,10 +256,6 @@ export default function ContactPage() {
                                     "Send Message"
                                 )}
                             </button>
-
-                            <p className="text-xs text-center text-zinc-500 mt-4">
-                                Powered by Web3Forms API
-                            </p>
                         </form>
                     )}
                 </div>
