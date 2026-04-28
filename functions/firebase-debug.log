@@ -1,0 +1,797 @@
+[debug] [2026-04-28T10:51:26.380Z] ----------------------------------------------------------------------
+[debug] [2026-04-28T10:51:26.381Z] Command:       /opt/homebrew/Cellar/node@22/22.22.0/bin/node /opt/homebrew/bin/firebase emulators:start --only functions
+[debug] [2026-04-28T10:51:26.381Z] CLI Version:   15.9.0
+[debug] [2026-04-28T10:51:26.382Z] Platform:      darwin
+[debug] [2026-04-28T10:51:26.382Z] Node Version:  v22.22.0
+[debug] [2026-04-28T10:51:26.382Z] Time:          Tue Apr 28 2026 16:51:26 GMT+0600 (Bangladesh Standard Time)
+[debug] [2026-04-28T10:51:26.382Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-28T10:51:27.022Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-28T10:51:27.022Z] > authorizing via signed-in user (iamahadul@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2026-04-28T10:51:27.237Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-04-28T10:51:27.237Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2026-04-28T10:51:27.239Z] Write emulator hub locator at /var/folders/s3/p5c3byds48d1sjwc45kq2m8h0000gn/T/hub-tooybd.json
+[debug] [2026-04-28T10:51:27.438Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-04-28T10:51:27.438Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-04-28T10:51:27.438Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-04-28T10:51:27.438Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2026-04-28T10:51:27.446Z] defaultcredentials: writing to file /Users/coder618/.config/firebase/iamahadul_gmail_com_application_default_credentials.json
+[debug] [2026-04-28T10:51:27.447Z] Setting GAC to /Users/coder618/.config/firebase/iamahadul_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/coder618/.config/firebase/iamahadul_gmail_com_application_default_credentials.json"}}
+[debug] [2026-04-28T10:51:27.447Z] Checked if tokens are valid: true, expires at: 1777374989205
+[debug] [2026-04-28T10:51:27.447Z] Checked if tokens are valid: true, expires at: 1777374989205
+[debug] [2026-04-28T10:51:27.448Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/tooybd/adminSdkConfig [none]
+[debug] [2026-04-28T10:51:28.103Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/tooybd/adminSdkConfig 200
+[debug] [2026-04-28T10:51:28.103Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/tooybd/adminSdkConfig {"projectId":"tooybd","storageBucket":"tooybd.firebasestorage.app"}
+[info] i  functions: Watching "/Users/coder618/Desktop/Personal/toys/toys-website/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/coder618/Desktop/Personal/toys/toys-website/functions\" for Cloud Functions..."}}
+[debug] [2026-04-28T10:51:28.124Z] Validating nodejs source
+[debug] [2026-04-28T10:51:28.493Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T10:51:28.493Z] Building nodejs source
+[debug] [2026-04-28T10:51:28.493Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T10:51:28.494Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T10:51:28.497Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8790
+
+[debug] [2026-04-28T10:51:28.852Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] ✔  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/tooybd/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/tooybd/us-central1/api)."}}
+[debug] [2026-04-28T10:51:32.872Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2026-04-28T10:51:39.386Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T10:51:39.386Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T10:51:39.387Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T10:51:39.386Z"],"workRunningCount":1}
+[debug] [2026-04-28T10:51:39.387Z] Accepted request OPTIONS /tooybd/us-central1/api/api/place-order --> us-central1-api
+[debug] [2026-04-28T10:51:39.387Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T10:51:39.388Z] [functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T10:51:39.394Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2026-04-28T10:51:39.395Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2026-04-28T10:51:39.976Z] [runtime-status] [67290] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-04-28T10:51:39.977Z] [runtime-status] [67290] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T10:51:39.977Z] [runtime-status] [67290] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2026-04-28T10:51:39.977Z] [runtime-status] [67290] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T10:51:39.977Z] [runtime-status] [67290] Detected firebase-functions v7+, skipping legacy stubs. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Detected firebase-functions v7+, skipping legacy stubs."}}
+[debug] [2026-04-28T10:51:39.977Z] [runtime-status] [67290] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-04-28T10:51:40.005Z] [runtime-status] [67290] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T10:51:40.133Z] [runtime-status] [67290] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2026-04-28T10:51:40.190Z] [runtime-status] [67290] initializeApp(DEFAULT) {"storageBucket":"tooybd.firebasestorage.app","projectId":"tooybd"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] initializeApp(DEFAULT) {\"storageBucket\":\"tooybd.firebasestorage.app\",\"projectId\":\"tooybd\"}"}}
+[debug] [2026-04-28T10:51:40.209Z] [runtime-status] [67290] Functions runtime initialized. {"cwd":"/Users/coder618/Desktop/Personal/toys/toys-website/functions","node_version":"22.22.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Functions runtime initialized. {\"cwd\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions\",\"node_version\":\"22.22.0\"}"}}
+[debug] [2026-04-28T10:51:40.209Z] [runtime-status] [67290] Listening to port: /var/folders/s3/p5c3byds48d1sjwc45kq2m8h0000gn/T/fire_emu_394eb39676eb3a9b.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [67290] Listening to port: /var/folders/s3/p5c3byds48d1sjwc45kq2m8h0000gn/T/fire_emu_394eb39676eb3a9b.sock"}}
+[debug] [2026-04-28T10:51:40.311Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE"}}
+[debug] [2026-04-28T10:51:40.311Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T10:51:40.311Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: BUSY"}}
+[debug] [2026-04-28T10:51:40.314Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.579167ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.579167ms"}}
+[debug] [2026-04-28T10:51:40.314Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE"}}
+[debug] [2026-04-28T10:51:40.314Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T10:51:40.314Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T10:51:40.314Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T10:51:40.316Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T10:51:40.316Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T10:51:40.316Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T10:51:40.316Z"],"workRunningCount":1}
+[debug] [2026-04-28T10:51:40.316Z] Accepted request POST /tooybd/us-central1/api/api/place-order --> us-central1-api
+[debug] [2026-04-28T10:51:40.317Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T10:51:40.317Z] [functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order"}}
+[debug] [2026-04-28T10:51:40.317Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T10:51:40.317Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: BUSY"}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[info] >  {"severity":"ERROR","message":"Error placing order TypeError: Cannot read properties of undefined (reading 'serverTimestamp')\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js:96:51\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:117:3)\n    at handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:295:15\n    at processParams (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:582:12)\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:291:5)\n    at Function.handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:186:3)"} {"user":{"severity":"ERROR","message":"Error placing order TypeError: Cannot read properties of undefined (reading 'serverTimestamp')\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js:96:51\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:117:3)\n    at handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:295:15\n    at processParams (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:582:12)\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:291:5)\n    at Function.handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:186:3)"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"ERROR\",\"message\":\"Error placing order TypeError: Cannot read properties of undefined (reading 'serverTimestamp')\\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js:96:51\\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:157:13)\\n    at Route.dispatch (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/route.js:117:3)\\n    at handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:435:11)\\n    at Layer.handleRequest (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/lib/layer.js:152:17)\\n    at /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:295:15\\n    at processParams (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:582:12)\\n    at next (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:291:5)\\n    at Function.handle (/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/router/index.js:186:3)\"}"}}
+[debug] [2026-04-28T10:51:40.329Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 12.44575ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 12.44575ms"}}
+[debug] [2026-04-28T10:51:40.330Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: IDLE"}}
+[debug] [2026-04-28T10:51:40.330Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T10:51:40.330Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T10:51:40.330Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T10:59:49.018Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/package.json changed, reloading triggers"}}
+[debug] [2026-04-28T10:59:49.110Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/package-lock.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/package-lock.json changed, reloading triggers"}}
+[debug] [2026-04-28T10:59:50.112Z] Validating nodejs source
+[debug] [2026-04-28T10:59:50.912Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T10:59:50.912Z] Building nodejs source
+[debug] [2026-04-28T10:59:50.912Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T10:59:50.913Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T10:59:50.915Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8816
+
+[debug] [2026-04-28T10:59:51.426Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T10:59:55.448Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2026-04-28T10:59:55.448Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: FINISHING"}}
+[debug] [2026-04-28T10:59:55.454Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: exited"}}
+[debug] [2026-04-28T10:59:55.454Z] [worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-dba796e9-be00-4b60-8f54-6e2a605c91ba]: FINISHED"}}
+[debug] [2026-04-28T11:00:05.060Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/lib/mongoose.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/lib/mongoose.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:00:06.061Z] Validating nodejs source
+[debug] [2026-04-28T11:00:06.466Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:00:06.466Z] Building nodejs source
+[debug] [2026-04-28T11:00:06.466Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:00:06.467Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:00:06.467Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8336
+
+[debug] [2026-04-28T11:00:06.854Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:00:19.084Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/models/Order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/models/Order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:00:20.086Z] Validating nodejs source
+[debug] [2026-04-28T11:00:20.485Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:00:20.485Z] Building nodejs source
+[debug] [2026-04-28T11:00:20.485Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:00:20.486Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:00:20.486Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8908
+
+[debug] [2026-04-28T11:00:20.913Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:00:39.357Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:00:40.359Z] Validating nodejs source
+[debug] [2026-04-28T11:00:40.781Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:00:40.781Z] Building nodejs source
+[debug] [2026-04-28T11:00:40.781Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:00:40.782Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:00:40.783Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8197
+
+[debug] [2026-04-28T11:00:41.177Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:00:46.636Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:00:47.639Z] Validating nodejs source
+[debug] [2026-04-28T11:00:48.062Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:00:48.062Z] Building nodejs source
+[debug] [2026-04-28T11:00:48.062Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:00:48.063Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:00:48.063Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8889
+
+[debug] [2026-04-28T11:00:48.404Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:00:52.700Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:00:53.701Z] Validating nodejs source
+[debug] [2026-04-28T11:00:53.973Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:00:53.973Z] Building nodejs source
+[debug] [2026-04-28T11:00:53.973Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:00:53.974Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:00:53.974Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8135
+
+[debug] [2026-04-28T11:00:54.261Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:00:59.728Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:00.730Z] Validating nodejs source
+[debug] [2026-04-28T11:01:01.057Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:01:01.057Z] Building nodejs source
+[debug] [2026-04-28T11:01:01.057Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:01:01.058Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:01:01.059Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8070
+
+[debug] [2026-04-28T11:01:01.335Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:01:06.006Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/src/routes/order.ts changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:07.007Z] Validating nodejs source
+[debug] [2026-04-28T11:01:07.311Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:01:07.311Z] Building nodejs source
+[debug] [2026-04-28T11:01:07.311Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:01:07.312Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:01:07.312Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8342
+
+[debug] [2026-04-28T11:01:07.584Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/email.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/email.js.map changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js.map changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/middleware/auth.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/middleware/auth.js.map changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/middleware/auth.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/middleware/auth.js changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/email.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/email.js changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/index.js changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/index.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/index.js.map changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:18.821Z] File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/coder618/Desktop/Personal/toys/toys-website/functions/lib/routes/order.js changed, reloading triggers"}}
+[debug] [2026-04-28T11:01:19.822Z] Validating nodejs source
+[debug] [2026-04-28T11:01:20.197Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0",
+    "mongoose": "^9.5.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/nodemailer": "^8.0.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2026-04-28T11:01:20.197Z] Building nodejs source
+[debug] [2026-04-28T11:01:20.197Z] Failed to find version of module node: reached end of search path /Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "24" doesn't match your global version "22". Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:01:20.199Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-04-28T11:01:20.199Z] Found firebase-functions binary at '/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8426
+
+[info] ◇ injected env (7) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+
+[debug] [2026-04-28T11:01:20.785Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2026-04-28T11:02:05.096Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T11:02:05.096Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:05.097Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T11:02:05.096Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:02:05.097Z] Accepted request OPTIONS /tooybd/us-central1/api/api/place-order --> us-central1-api
+[debug] [2026-04-28T11:02:05.098Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:02:05.099Z] [functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order"}}
+[debug] [2026-04-28T11:02:05.099Z] [worker-pool] Cleaned up workers for us-central1-api: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-api: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2026-04-28T11:02:05.103Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2026-04-28T11:02:05.103Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2026-04-28T11:02:05.749Z] [runtime-status] [68664] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-04-28T11:02:05.749Z] [runtime-status] [68664] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T11:02:05.750Z] [runtime-status] [68664] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2026-04-28T11:02:05.750Z] [runtime-status] [68664] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T11:02:05.750Z] [runtime-status] [68664] Detected firebase-functions v7+, skipping legacy stubs. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Detected firebase-functions v7+, skipping legacy stubs."}}
+[debug] [2026-04-28T11:02:05.750Z] [runtime-status] [68664] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-04-28T11:02:05.785Z] [runtime-status] [68664] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-04-28T11:02:05.937Z] [runtime-status] [68664] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"13.8.0","resolution":"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"13.8.0\",\"resolution\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2026-04-28T11:02:06.002Z] [runtime-status] [68664] initializeApp(DEFAULT) {"storageBucket":"tooybd.firebasestorage.app","projectId":"tooybd"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] initializeApp(DEFAULT) {\"storageBucket\":\"tooybd.firebasestorage.app\",\"projectId\":\"tooybd\"}"}}
+[info] >  ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com] {"user":"◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]"}}
+[debug] [2026-04-28T11:02:06.168Z] [runtime-status] [68664] Functions runtime initialized. {"cwd":"/Users/coder618/Desktop/Personal/toys/toys-website/functions","node_version":"22.22.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Functions runtime initialized. {\"cwd\":\"/Users/coder618/Desktop/Personal/toys/toys-website/functions\",\"node_version\":\"22.22.0\"}"}}
+[debug] [2026-04-28T11:02:06.168Z] [runtime-status] [68664] Listening to port: /var/folders/s3/p5c3byds48d1sjwc45kq2m8h0000gn/T/fire_emu_f50d0ec980a4b6d5.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [68664] Listening to port: /var/folders/s3/p5c3byds48d1sjwc45kq2m8h0000gn/T/fire_emu_f50d0ec980a4b6d5.sock"}}
+[debug] [2026-04-28T11:02:06.218Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:02:06.218Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:02:06.218Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:02:06.221Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.748625ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.748625ms"}}
+[debug] [2026-04-28T11:02:06.221Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:02:06.221Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:02:06.221Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:02:06.221Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:06.223Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T11:02:06.223Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:06.223Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/place-order-2026-04-28T11:02:06.223Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:02:06.223Z] Accepted request POST /tooybd/us-central1/api/api/place-order --> us-central1-api
+[debug] [2026-04-28T11:02:06.223Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:02:06.223Z] [functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/place-order, mapping to path=/api/place-order"}}
+[debug] [2026-04-28T11:02:06.223Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:02:06.223Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[info] >  {"severity":"INFO","message":"Order placed successfully. Order ID: ORD-1777374126233-6820"} {"user":{"severity":"INFO","message":"Order placed successfully. Order ID: ORD-1777374126233-6820"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m {\"severity\":\"INFO\",\"message\":\"Order placed successfully. Order ID: ORD-1777374126233-6820\"}"}}
+[debug] [2026-04-28T11:02:07.373Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 1150.105583ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 1150.105583ms"}}
+[debug] [2026-04-28T11:02:07.373Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:02:07.373Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:02:07.373Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:02:07.373Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:55.941Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:02:55.941Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:55.942Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:02:55.941Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:02:55.942Z] Accepted request OPTIONS /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:02:55.943Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:02:55.943Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:02:55.943Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:02:55.943Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:02:55.946Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.696708ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.696708ms"}}
+[debug] [2026-04-28T11:02:55.946Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:02:55.946Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:02:55.946Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:02:55.946Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:55.947Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:02:55.947Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:02:55.948Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:02:55.947Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:02:55.948Z] Accepted request GET /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:02:55.948Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:02:55.948Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:02:55.948Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:02:55.948Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[warn] ⚠  functions: The Firebase Authentication emulator is not running, so calls to Firebase Authentication will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"The Firebase Authentication emulator is not running, so calls to Firebase Authentication will affect production."}}
+[debug] [2026-04-28T11:02:56.280Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 336.021417ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 336.021417ms"}}
+[debug] [2026-04-28T11:02:56.285Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:02:56.285Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:02:56.285Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:02:56.285Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.166Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:10.166Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.166Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:10.166Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:10.166Z] Accepted request OPTIONS /tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b --> us-central1-api
+[debug] [2026-04-28T11:03:10.167Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:10.167Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b"}}
+[debug] [2026-04-28T11:03:10.168Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:10.168Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:10.171Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 3.368ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 3.368ms"}}
+[debug] [2026-04-28T11:03:10.172Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:10.172Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:10.172Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:10.172Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.173Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:10.173Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.173Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:10.173Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:10.173Z] Accepted request PUT /tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b --> us-central1-api
+[debug] [2026-04-28T11:03:10.173Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:10.173Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b"}}
+[debug] [2026-04-28T11:03:10.173Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:10.174Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[info] >  (node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead. {"user":"(node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead."}}
+[info] >  (Use `node --trace-warnings ...` to show where the warning was created) {"user":"(Use `node --trace-warnings ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-warnings ...` to show where the warning was created)"}}
+[debug] [2026-04-28T11:03:10.240Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 66.025875ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 66.025875ms"}}
+[debug] [2026-04-28T11:03:10.240Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:10.240Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:10.240Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:10.240Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.242Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:10.242Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.242Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:10.242Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:10.242Z] Accepted request OPTIONS /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:10.243Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:10.243Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:10.243Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:10.243Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:10.244Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 1.005458ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 1.005458ms"}}
+[debug] [2026-04-28T11:03:10.244Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:10.244Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:10.244Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:10.244Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.245Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:10.245Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:10.245Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:10.245Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:10.245Z] Accepted request GET /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:10.245Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:10.245Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:10.245Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:10.245Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:10.301Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 55.76575ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 55.76575ms"}}
+[debug] [2026-04-28T11:03:10.301Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:10.301Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:10.301Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:10.301Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:13.581Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:13.581Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:13.581Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:13.581Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:13.581Z] Accepted request GET /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:13.581Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:13.582Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:13.582Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:13.582Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:13.636Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 54.481208ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 54.481208ms"}}
+[debug] [2026-04-28T11:03:13.636Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:13.636Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:13.636Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:13.636Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.559Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:18.558Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.559Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:18.558Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:18.559Z] Accepted request OPTIONS /tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b --> us-central1-api
+[debug] [2026-04-28T11:03:18.559Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:18.559Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b"}}
+[debug] [2026-04-28T11:03:18.559Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:18.560Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:18.562Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.859875ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.859875ms"}}
+[debug] [2026-04-28T11:03:18.563Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:18.563Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:18.563Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:18.563Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.564Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:18.564Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.564Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b-2026-04-28T11:03:18.564Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:18.564Z] Accepted request PUT /tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b --> us-central1-api
+[debug] [2026-04-28T11:03:18.564Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:18.565Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders/69f093aeff2e5390a64e822b, mapping to path=/api/admin/orders/69f093aeff2e5390a64e822b"}}
+[debug] [2026-04-28T11:03:18.565Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:18.565Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[info] >  (node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead. {"user":"(node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:68664) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead."}}
+[debug] [2026-04-28T11:03:18.630Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 65.838083ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 65.838083ms"}}
+[debug] [2026-04-28T11:03:18.631Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:18.631Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:18.631Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:18.632Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.634Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:18.634Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.634Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:18.634Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:18.634Z] Accepted request OPTIONS /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:18.634Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:18.634Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:18.634Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:18.635Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:18.637Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 1.824791ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 1.824791ms"}}
+[debug] [2026-04-28T11:03:18.637Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:18.637Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:18.637Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:18.637Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.638Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:18.638Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:18.638Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:18.638Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:18.638Z] Accepted request GET /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:18.638Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:18.638Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:18.638Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:18.638Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:18.694Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 55.936292ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 55.936292ms"}}
+[debug] [2026-04-28T11:03:18.694Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:18.694Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:18.694Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:18.694Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:19.961Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:19.961Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:19.961Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/admin/orders-2026-04-28T11:03:19.961Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:19.962Z] Accepted request GET /tooybd/us-central1/api/api/admin/orders?page=1&limit=10 --> us-central1-api
+[debug] [2026-04-28T11:03:19.962Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:19.962Z] [functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/admin/orders?page=1&limit=10, mapping to path=/api/admin/orders?page=1&limit=10"}}
+[debug] [2026-04-28T11:03:19.962Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:19.963Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:20.023Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 60.813334ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 60.813334ms"}}
+[debug] [2026-04-28T11:03:20.024Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:20.024Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:20.024Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:20.024Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:58.142Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/orders-2026-04-28T11:03:58.141Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:58.145Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/orders-2026-04-28T11:03:58.141Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:58.145Z] Accepted request OPTIONS /tooybd/us-central1/api/api/orders --> us-central1-api
+[debug] [2026-04-28T11:03:58.146Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:58.146Z] [functions] Got req.url=/tooybd/us-central1/api/api/orders, mapping to path=/api/orders {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/orders, mapping to path=/api/orders"}}
+[debug] [2026-04-28T11:03:58.146Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:58.147Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:58.148Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.010792ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.010792ms"}}
+[debug] [2026-04-28T11:03:58.149Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:58.149Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:58.149Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:58.149Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:58.149Z] [work-queue] {"queuedWork":["/tooybd/us-central1/api/api/orders-2026-04-28T11:03:58.149Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-04-28T11:03:58.149Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/tooybd/us-central1/api/api/orders-2026-04-28T11:03:58.149Z"],"workRunningCount":1}
+[debug] [2026-04-28T11:03:58.149Z] Accepted request GET /tooybd/us-central1/api/api/orders --> us-central1-api
+[debug] [2026-04-28T11:03:58.149Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-04-28T11:03:58.149Z] [functions] Got req.url=/tooybd/us-central1/api/api/orders, mapping to path=/api/orders {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/tooybd/us-central1/api/api/orders, mapping to path=/api/orders"}}
+[debug] [2026-04-28T11:03:58.149Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-04-28T11:03:58.149Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: BUSY"}}
+[debug] [2026-04-28T11:03:58.205Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 56.567834ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 56.567834ms"}}
+[debug] [2026-04-28T11:03:58.206Z] [worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-5ac470b3-fbd5-4153-8f5a-1c560c235222]: IDLE"}}
+[debug] [2026-04-28T11:03:58.206Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-04-28T11:03:58.206Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-04-28T11:03:58.206Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

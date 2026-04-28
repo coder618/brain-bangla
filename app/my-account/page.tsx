@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { auth, db } from "../lib/firebase";
+import { auth } from "../lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { collection, query, where, orderBy, getDocs, Timestamp } from "firebase/firestore";
 
 type OrderItem = {
     id: string | number;
@@ -25,7 +24,7 @@ type Order = {
     paymentMethod: string;
     total: number;
     items: OrderItem[];
-    createdAt: Timestamp | null;
+    createdAt: number | null;
 };
 
 export default function MyAccountPage() {
@@ -34,28 +33,27 @@ export default function MyAccountPage() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchOrders = async (uid: string) => {
-        if (!db) return;
+    const fetchOrders = async (currentUser: User) => {
         try {
-            // Removed orderBy to avoid requiring a Firebase Composite Index
-            const q = query(
-                collection(db, "orders"),
-                where("userId", "==", uid)
-            );
-            const querySnapshot = await getDocs(q);
-            const fetchedOrders: Order[] = [];
-            querySnapshot.forEach((doc) => {
-                fetchedOrders.push({ id: doc.id, ...doc.data() } as Order);
+            const token = await currentUser.getIdToken();
+            const baseUrl =
+                process.env.NEXT_PUBLIC_API_BASE_URL ||
+                "http://127.0.0.1:5001/your-firebase-project-id/us-central1/api";
+
+            const response = await fetch(`${baseUrl}/api/orders`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             });
-            
-            // Sort orders by date descending in memory
-            fetchedOrders.sort((a, b) => {
-                const timeA = a.createdAt ? a.createdAt.toMillis() : 0;
-                const timeB = b.createdAt ? b.createdAt.toMillis() : 0;
-                return timeB - timeA;
-            });
-            
-            setOrders(fetchedOrders);
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch orders");
+            }
+
+            const data = await response.json();
+            if (data.success) {
+                setOrders(data.orders);
+            }
         } catch (error) {
             console.error("Error fetching orders:", error);
         } finally {
@@ -68,7 +66,7 @@ export default function MyAccountPage() {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser);
-                fetchOrders(currentUser.uid);
+                fetchOrders(currentUser);
             } else {
                 router.push("/");
             }
@@ -124,7 +122,7 @@ export default function MyAccountPage() {
                                     <p className="text-sm text-zinc-500">
                                         Date:{" "}
                                         {order.createdAt
-                                            ? order.createdAt.toDate().toLocaleDateString()
+                                            ? new Date(order.createdAt).toLocaleDateString()
                                             : "Pending"}
                                     </p>
                                 </div>

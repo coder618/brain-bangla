@@ -44,10 +44,15 @@ export default function CartPage() {
         setSuccessMessage(null);
 
         try {
-            const response = await fetch("/api/order", {
+            const baseUrl =
+                process.env.NEXT_PUBLIC_API_BASE_URL ||
+                "http://127.0.0.1:5001/your-firebase-project-id/us-central1/api";
+
+            const response = await fetch(`${baseUrl}/api/place-order`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
+                    userId: user?.uid || null,
                     name,
                     phone,
                     address,
@@ -56,9 +61,10 @@ export default function CartPage() {
                     transactionId: paymentMethod === "nagad" ? transactionId : undefined,
                     items: cartItems.map((item) => ({
                         id: item.product.id,
-                        title: item.product.title || item.product.name,
+                        title: item.product.title || item.product.name || "Untitled",
                         quantity: item.quantity,
                         price: item.product.salePrice || item.product.price,
+                        image: item.product.featuredImage || item.product.image || null,
                     })),
                     total: cartTotal,
                 }),
@@ -67,33 +73,7 @@ export default function CartPage() {
             const data = await response.json();
 
             if (!response.ok || !data.success) {
-                throw new Error(data.message || "Failed to place order");
-            }
-
-            if (user && db) {
-                try {
-                    await addDoc(collection(db, "orders"), {
-                        userId: user.uid,
-                        orderId: data.orderId || `ORD-${Date.now()}`,
-                        name,
-                        phone,
-                        address,
-                        postCode,
-                        paymentMethod,
-                        transactionId: paymentMethod === "nagad" ? transactionId : null,
-                        items: cartItems.map((item) => ({
-                            id: item.product.id,
-                            title: item.product.title || item.product.name || "Untitled",
-                            quantity: item.quantity,
-                            price: item.product.salePrice || item.product.price,
-                            image: item.product.featuredImage || item.product.image || null,
-                        })),
-                        total: cartTotal,
-                        createdAt: serverTimestamp(),
-                    });
-                } catch (dbError) {
-                    console.error("Error saving order to Firestore:", dbError);
-                }
+                throw new Error(data.message || data.error || "Failed to place order");
             }
 
             setSuccessMessage(data.message || "Order successfully placed!");
