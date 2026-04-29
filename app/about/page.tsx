@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-    title: "About | güzal",
-    description: "Learn more about Ahadul Islam, the founder and technical force behind güzal.",
+    title: "About | TooyBd",
+    description: "Learn more about Ahadul Islam, the founder and technical force behind TooyBd.",
 };
 
 export default function AboutPage() {

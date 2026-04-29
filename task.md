@@ -8,11 +8,9 @@ create a contact us page
 
 ## Content task
 
-1. Create Logo
 1. add brain Booster content
-1. add Tangram content
-1. Add electric buzz content
-1. Do product shots
+2. add Tangram content
+3. Add electric buzz content
+4. Create Intro Video for each product
 
-1. Create Video for each product
-1. setup home page schema
+5. Do product shots

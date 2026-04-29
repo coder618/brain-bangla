@@ -54,7 +54,7 @@ export default function HeroBanners() {
                         {/* Top Right Banner */}
                         <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl sm:rounded-3xl bg-[#f38c16] p-6 sm:p-8 text-white min-h-[200px] sm:min-h-[240px]">
                             <div className="relative z-10 w-full max-w-[200px] sm:max-w-[220px]">
-                                <h3 className="mb-2 sm:mb-3 text-2xl sm:text-3xl font-bold leading-tight">
+                                <h3 className="mb-2 sm:mb-3  md:text-[27px] text-[24px] font-bold leading-tight">
                                     ধৈর্য এবং মনোযোগ বৃদ্ধি হবে
                                 </h3>
                                 <p className="mb-6 text-md text-white/90">
@@ -76,7 +76,7 @@ export default function HeroBanners() {
                         {/* Bottom Right Banner */}
                         <div className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-2xl sm:rounded-3xl bg-[#eb3a56] p-6 sm:p-8 text-white min-h-[200px] sm:min-h-[240px]">
                             <div className="relative z-10 w-full max-w-[200px] sm:max-w-[220px]">
-                                <h3 className="mb-2 sm:mb-3 text-2xl sm:text-3xl font-bold leading-tight">
+                                <h3 className="mb-2 sm:mb-3  md:text-[27px] text-[24px] font-bold leading-tight">
                                     Problem Solving Skill বাড়বে
                                 </h3>
                                 <p className="mb-6 text-md text-white/90">

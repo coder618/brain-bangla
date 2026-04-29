@@ -118,14 +118,11 @@ export default function Footer() {
                             className="mb-4 inline-flex items-center text-4xl font-black tracking-tighter"
                             style={{ fontFamily: "system-ui, sans-serif" }}
                         >
-                            <span className="text-white">g</span>
-                            <span className="text-white">ü</span>
-                            <span className="text-white">z</span>
-                            <span className="text-white">a</span>
-                            <span className="text-white">l</span>
+                            TooyBd
+                            {/* <img src="./logo.png" alt="tooybd logo" /> */}
                         </Link>
                         <p className="text-sm text-white/70 mt-2">
-                            Since 2016 we have been delivering.
+                            Since 2026 we have been delivering.
                         </p>
                     </div>
 

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-    title: "Investors | güzal",
-    description: "Invest in güzal - Shaping the future of play.",
+    title: "Investors | TooyBd",
+    description: "Invest in TooyBd - Shaping the future of play.",
 };
 
 export default function InvestorsPage() {
@@ -15,7 +15,7 @@ export default function InvestorsPage() {
                         Invest in the Future of Play
                     </h1>
                     <p className="text-lg md:text-xl text-zinc-800 mb-10 max-w-2xl mx-auto font-medium">
-                        At <span className="font-black text-[#f5415f]">güzal</span>, I am on a
+                        At <span className="font-black text-[#f5415f]">TooyBd</span>, I am on a
                         mission to revolutionize the toy industry by creating joyful, sustainable,
                         and educational experiences for children. Join me in bringing this vision to
                         life.
@@ -37,7 +37,7 @@ export default function InvestorsPage() {
             <section className="py-20 px-6 sm:px-12 lg:px-24 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-black text-[#111] mb-4">
-                        Why Invest in güzal?
+                        Why Invest in TooyBd?
                     </h2>
                     <p className="text-zinc-600 max-w-2xl mx-auto">
                         I am building a brand positioned in a rapidly growing market, driven by a

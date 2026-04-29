@@ -99,14 +99,10 @@ export default function Header() {
                 {/* Logo */}
                 <Link
                     href="/"
-                    className="flex items-center text-3xl font-black tracking-tighter"
+                    className="flex items-center text-3xl font-black tracking-tighter max-w-[120px] h-[auto]"
                     style={{ fontFamily: "system-ui, sans-serif" }}
                 >
-                    <span className="text-[#f5415f]">g</span>
-                    <span className="text-[#8cc63f]">ü</span>
-                    <span className="text-[#f7931e]">z</span>
-                    <span className="text-[#f5415f]">a</span>
-                    <span className="text-[#29abe2]">l</span>
+                    <img src="/logo.png" alt="Toys" className="w-full h-auto" />
                 </Link>
 
                 {/* Navigation */}

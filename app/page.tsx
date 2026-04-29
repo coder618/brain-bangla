@@ -40,6 +40,37 @@ export default function Home() {
         },
     };
 
+    const navigationJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: [
+            {
+                "@type": "SiteNavigationElement",
+                position: 1,
+                name: "Home",
+                url: `${siteUrl}/`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                position: 2,
+                name: "Shop",
+                url: `${siteUrl}/shop`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                position: 3,
+                name: "Contact",
+                url: `${siteUrl}/contact`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                position: 4,
+                name: "Investors",
+                url: `${siteUrl}/investors`,
+            },
+        ],
+    };
+
     const galleryImages = [
         "/images/tangram-puzzle-small.png",
         "/images/tangram-puzzle-small.png",
@@ -59,6 +90,10 @@ export default function Home() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(storeJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationJsonLd) }}
             />
             <main className="flex flex-1 w-full flex-col items-center">
                 <HeroBanners />
